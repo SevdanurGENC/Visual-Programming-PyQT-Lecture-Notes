@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>960</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>📒 Kişi Rehberi — Qt Designer Örneği</string>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>880</width>
+    <height>580</height>
+   </size>
+  </property>
+
+  <!-- ═══ MENU BAR ═══ -->
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect><x>0</x><y>0</y><width>960</width><height>26</height></rect>
+   </property>
+   <widget class="QMenu" name="menuDosya">
+    <property name="title"><string>&amp;Dosya</string></property>
+    <addaction name="actionDosyaAc"/>
+    <addaction name="actionKaydet"/>
+    <addaction name="separator"/>
+    <addaction name="actionCikis"/>
+   </widget>
+   <widget class="QMenu" name="menuDuzenle">
+    <property name="title"><string>&amp;Düzenle</string></property>
+    <addaction name="actionTumunuSec"/>
+    <addaction name="actionAra"/>
+   </widget>
+   <widget class="QMenu" name="menuYardim">
+    <property name="title"><string>&amp;Yardım</string></property>
+    <addaction name="actionHakkinda"/>
+   </widget>
+   <addaction name="menuDosya"/>
+   <addaction name="menuDuzenle"/>
+   <addaction name="menuYardim"/>
+  </widget>
+
+  <!-- ═══ STATUS BAR ═══ -->
+  <widget class="QStatusBar" name="statusBar"/>
+
+  <!-- ═══ MERKEZ WIDGET ═══ -->
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="anaLayout">
+    <property name="spacing"><number>10</number></property>
+    <property name="contentsMargins">
+     <rect><x>12</x><y>10</y><width>-1</width><height>-1</height></rect>
+    </property>
+
+    <!-- ── ÜSTTE: Başlık + Arama ── -->
+    <item>
+     <layout class="QHBoxLayout" name="ustLayout">
+      <property name="spacing"><number>10</number></property>
+      <item>
+       <widget class="QLabel" name="baslikLabel">
+        <property name="text"><string>📒  Kişi Rehberi</string></property>
+        <property name="font">
+         <font><pointsize>18</pointsize><weight>75</weight><bold>true</bold></font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="ustSpacer">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0">
+         <size><width>40</width><height>20</height></size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="aramaLabel">
+        <property name="text"><string>🔍  Ara:</string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="aramaInput">
+        <property name="placeholderText"><string>Ad, soyad veya telefon ara...</string></property>
+        <property name="minimumWidth"><number>220</number></property>
+        <property name="clearButtonEnabled"><bool>true</bool></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="aramaTemizleBtn">
+        <property name="text"><string>✕</string></property>
+        <property name="maximumWidth"><number>32</number></property>
+        <property name="toolTip"><string>Aramayı temizle</string></property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+    <!-- ── ORTA: Splitter (Form | Tablo) ── -->
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation"><enum>Qt::Horizontal</enum></property>
+
+      <!-- SOL PANEL: Form -->
+      <widget class="QGroupBox" name="formGrup">
+       <property name="title"><string>👤  Kişi Bilgileri</string></property>
+       <property name="minimumWidth"><number>270</number></property>
+       <property name="maximumWidth"><number>320</number></property>
+       <layout class="QFormLayout" name="formLayout">
+        <property name="spacing"><number>10</number></property>
+        <property name="contentsMargins">
+         <rect><x>14</x><y>18</y><width>-1</width><height>-1</height></rect>
+        </property>
+
+        <item row="0" column="0">
+         <widget class="QLabel" name="adLabel">
+          <property name="text"><string>Ad:</string></property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="adInput">
+          <property name="placeholderText"><string>Kişinin adı</string></property>
+         </widget>
+        </item>
+
+        <item row="1" column="0">
+         <widget class="QLabel" name="soyadLabel">
+          <property name="text"><string>Soyad:</string></property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="soyadInput">
+          <property name="placeholderText"><string>Kişinin soyadı</string></property>
+         </widget>
+        </item>
+
+        <item row="2" column="0">
+         <widget class="QLabel" name="telefonLabel">
+          <property name="text"><string>Telefon:</string></property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="telefonInput">
+          <property name="placeholderText"><string>0532-xxx-xxxx</string></property>
+         </widget>
+        </item>
+
+        <item row="3" column="0">
+         <widget class="QLabel" name="emailLabel">
+          <property name="text"><string>E-posta:</string></property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="emailInput">
+          <property name="placeholderText"><string>ornek@mail.com</string></property>
+         </widget>
+        </item>
+
+        <item row="4" column="0">
+         <widget class="QLabel" name="grupLabel">
+          <property name="text"><string>Grup:</string></property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="grupCombo">
+          <item><property name="text"><string>👨‍👩‍👧  Aile</string></property></item>
+          <item><property name="text"><string>👥  Arkadaş</string></property></item>
+          <item><property name="text"><string>💼  İş</string></property></item>
+          <item><property name="text"><string>🎓  Okul</string></property></item>
+          <item><property name="text"><string>📌  Diğer</string></property></item>
+         </widget>
+        </item>
+
+        <item row="5" column="0">
+         <widget class="QLabel" name="notLabel">
+          <property name="text"><string>Not:</string></property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QTextEdit" name="notInput">
+          <property name="placeholderText"><string>İsteğe bağlı not...</string></property>
+          <property name="maximumHeight"><number>72</number></property>
+         </widget>
+        </item>
+
+        <!-- Favori checkbox -->
+        <item row="6" column="1">
+         <widget class="QCheckBox" name="favoriCheck">
+          <property name="text"><string>⭐  Favorilere ekle</string></property>
+         </widget>
+        </item>
+
+        <!-- Butonlar -->
+        <item row="7" column="0" colspan="2">
+         <layout class="QHBoxLayout" name="butonLayout">
+          <property name="spacing"><number>8</number></property>
+          <item>
+           <widget class="QPushButton" name="ekleBtn">
+            <property name="text"><string>➕  Ekle</string></property>
+            <property name="default"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="guncelleBtn">
+            <property name="text"><string>✏️  Güncelle</string></property>
+            <property name="enabled"><bool>false</bool></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+
+        <item row="8" column="0" colspan="2">
+         <layout class="QHBoxLayout" name="buton2Layout">
+          <property name="spacing"><number>8</number></property>
+          <item>
+           <widget class="QPushButton" name="silBtn">
+            <property name="text"><string>🗑️  Sil</string></property>
+            <property name="enabled"><bool>false</bool></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="temizleBtn">
+            <property name="text"><string>🔄  Temizle</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+
+        <!-- Durum etiketi -->
+        <item row="9" column="0" colspan="2">
+         <widget class="QLabel" name="durumLabel">
+          <property name="text"><string>Bilgileri doldurup "Ekle" butonuna basın.</string></property>
+          <property name="wordWrap"><bool>true</bool></property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+
+      <!-- SAĞ PANEL: Tablo -->
+      <widget class="QWidget" name="sagPanel">
+       <layout class="QVBoxLayout" name="sagLayout">
+        <property name="spacing"><number>8</number></property>
+        <property name="contentsMargins">
+         <rect><x>4</x><y>0</y><width>-1</width><height>-1</height></rect>
+        </property>
+
+        <!-- Grup filtre butonları -->
+        <item>
+         <layout class="QHBoxLayout" name="filtreLayout">
+          <property name="spacing"><number>6</number></property>
+          <item>
+           <widget class="QLabel" name="filtreLabel">
+            <property name="text"><string>Filtre:</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="filtreHepsiBtn">
+            <property name="text"><string>Tümü</string></property>
+            <property name="checkable"><bool>true</bool></property>
+            <property name="checked"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="filtreAileBtn">
+            <property name="text"><string>👨‍👩‍👧 Aile</string></property>
+            <property name="checkable"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="filtreArkadasBtn">
+            <property name="text"><string>👥 Arkadaş</string></property>
+            <property name="checkable"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="filtreIsBtn">
+            <property name="text"><string>💼 İş</string></property>
+            <property name="checkable"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="filtreFavoriBtn">
+            <property name="text"><string>⭐ Favori</string></property>
+            <property name="checkable"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="filtreSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0">
+             <size><width>20</width><height>20</height></size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="sayacLabel">
+            <property name="text"><string>0 kişi</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+
+        <!-- Ana Tablo -->
+        <item>
+         <widget class="QTableWidget" name="kisilerTablosu">
+          <property name="columnCount"><number>6</number></property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="sortingEnabled"><bool>true</bool></property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text"><string>ID</string></property>
+          </column>
+          <column>
+           <property name="text"><string>Ad</string></property>
+          </column>
+          <column>
+           <property name="text"><string>Soyad</string></property>
+          </column>
+          <column>
+           <property name="text"><string>Telefon</string></property>
+          </column>
+          <column>
+           <property name="text"><string>Grup</string></property>
+          </column>
+          <column>
+           <property name="text"><string>⭐</string></property>
+          </column>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+
+    <!-- ── ALTTA: İstatistik çubuğu ── -->
+    <item>
+     <layout class="QHBoxLayout" name="altLayout">
+      <property name="spacing"><number>20</number></property>
+
+      <item>
+       <widget class="QLabel" name="toplamLabel">
+        <property name="text"><string>Toplam: <b>0</b></string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="aileSayiLabel">
+        <property name="text"><string>👨‍👩‍👧 Aile: 0</string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="arkadasSayiLabel">
+        <property name="text"><string>👥 Arkadaş: 0</string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="isSayiLabel">
+        <property name="text"><string>💼 İş: 0</string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="favoriSayiLabel">
+        <property name="text"><string>⭐ Favori: 0</string></property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="altSpacer">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0">
+         <size><width>40</width><height>20</height></size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="csvExportBtn">
+        <property name="text"><string>📥  CSV Dışa Aktar</string></property>
+       </widget>
+      </item>
+
+     </layout>
+    </item>
+
+   </layout>
+  </widget>
+
+  <!-- ═══ ACTIONS ═══ -->
+  <action name="actionDosyaAc">
+   <property name="text"><string>📂 Veritabanı Aç...</string></property>
+   <property name="shortcut"><string>Ctrl+O</string></property>
+  </action>
+  <action name="actionKaydet">
+   <property name="text"><string>💾 Kaydet</string></property>
+   <property name="shortcut"><string>Ctrl+S</string></property>
+  </action>
+  <action name="actionCikis">
+   <property name="text"><string>🚪 Çıkış</string></property>
+   <property name="shortcut"><string>Ctrl+Q</string></property>
+  </action>
+  <action name="actionTumunuSec">
+   <property name="text"><string>Tümünü Seç</string></property>
+   <property name="shortcut"><string>Ctrl+A</string></property>
+  </action>
+  <action name="actionAra">
+   <property name="text"><string>🔍 Ara</string></property>
+   <property name="shortcut"><string>Ctrl+F</string></property>
+  </action>
+  <action name="actionHakkinda">
+   <property name="text"><string>ℹ️ Hakkında</string></property>
+  </action>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
